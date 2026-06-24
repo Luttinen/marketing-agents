@@ -268,7 +268,7 @@
 
 <!-- STATS -->
 <div class="stats-bar">
-  <div class="stat"><div class="stat-num">16</div><div class="stat-label" id="stat1">Erikoisagenttia</div></div>
+  <div class="stat"><div class="stat-num">32</div><div class="stat-label" id="stat1">Erikoisagenttia</div></div>
   <div class="stat"><div class="stat-num">2</div><div class="stat-label" id="stat2">Kieltä</div></div>
   <div class="stat"><div class="stat-num">∞</div><div class="stat-label" id="stat3">Luovuutta</div></div>
   <div class="stat"><div class="stat-num">24/7</div><div class="stat-label" id="stat4">Saatavilla</div></div>
@@ -386,7 +386,23 @@ const CARD_STYLES = {
   community: {color:'#f43f5e', glow:'radial-gradient(at top left, rgba(244,63,94,0.08), transparent)', shadow:'rgba(244,63,94,0.25)', tag:'rgba(244,63,94,0.12)'},
   podcast:   {color:'#7c3aed', glow:'radial-gradient(at top left, rgba(124,58,237,0.08), transparent)', shadow:'rgba(124,58,237,0.25)', tag:'rgba(124,58,237,0.12)'},
   sales:     {color:'#eab308', glow:'radial-gradient(at top left, rgba(234,179,8,0.08), transparent)', shadow:'rgba(234,179,8,0.25)', tag:'rgba(234,179,8,0.12)'},
-  ai_expert: {color:'#06b6d4', glow:'radial-gradient(at top left, rgba(6,182,212,0.08), transparent)', shadow:'rgba(6,182,212,0.25)', tag:'rgba(6,182,212,0.12)'},
+  ai_expert:      {color:'#06b6d4', glow:'radial-gradient(at top left, rgba(6,182,212,0.08), transparent)', shadow:'rgba(6,182,212,0.25)', tag:'rgba(6,182,212,0.12)'},
+  ux_writer:     {color:'#0891b2', glow:'radial-gradient(at top left, rgba(8,145,178,0.08), transparent)', shadow:'rgba(8,145,178,0.25)', tag:'rgba(8,145,178,0.12)'},
+  translator:    {color:'#0284c7', glow:'radial-gradient(at top left, rgba(2,132,199,0.08), transparent)', shadow:'rgba(2,132,199,0.25)', tag:'rgba(2,132,199,0.12)'},
+  storytelling:  {color:'#b45309', glow:'radial-gradient(at top left, rgba(180,83,9,0.08), transparent)', shadow:'rgba(180,83,9,0.25)', tag:'rgba(180,83,9,0.12)'},
+  ecommerce:     {color:'#16a34a', glow:'radial-gradient(at top left, rgba(22,163,74,0.08), transparent)', shadow:'rgba(22,163,74,0.25)', tag:'rgba(22,163,74,0.12)'},
+  b2b:           {color:'#1d4ed8', glow:'radial-gradient(at top left, rgba(29,78,216,0.08), transparent)', shadow:'rgba(29,78,216,0.25)', tag:'rgba(29,78,216,0.12)'},
+  retention:     {color:'#7e22ce', glow:'radial-gradient(at top left, rgba(126,34,206,0.08), transparent)', shadow:'rgba(126,34,206,0.25)', tag:'rgba(126,34,206,0.12)'},
+  naming:        {color:'#d97706', glow:'radial-gradient(at top left, rgba(217,119,6,0.08), transparent)', shadow:'rgba(217,119,6,0.25)', tag:'rgba(217,119,6,0.12)'},
+  crisis:        {color:'#dc2626', glow:'radial-gradient(at top left, rgba(220,38,38,0.08), transparent)', shadow:'rgba(220,38,38,0.25)', tag:'rgba(220,38,38,0.12)'},
+  local:         {color:'#059669', glow:'radial-gradient(at top left, rgba(5,150,105,0.08), transparent)', shadow:'rgba(5,150,105,0.25)', tag:'rgba(5,150,105,0.12)'},
+  visual_brief:  {color:'#db2777', glow:'radial-gradient(at top left, rgba(219,39,119,0.08), transparent)', shadow:'rgba(219,39,119,0.25)', tag:'rgba(219,39,119,0.12)'},
+  research:      {color:'#0f766e', glow:'radial-gradient(at top left, rgba(15,118,110,0.08), transparent)', shadow:'rgba(15,118,110,0.25)', tag:'rgba(15,118,110,0.12)'},
+  affiliate:     {color:'#0369a1', glow:'radial-gradient(at top left, rgba(3,105,161,0.08), transparent)', shadow:'rgba(3,105,161,0.25)', tag:'rgba(3,105,161,0.12)'},
+  gaming_marketing:{color:'#7c3aed', glow:'radial-gradient(at top left, rgba(124,58,237,0.08), transparent)', shadow:'rgba(124,58,237,0.25)', tag:'rgba(124,58,237,0.12)'},
+  funnel:        {color:'#c2410c', glow:'radial-gradient(at top left, rgba(194,65,12,0.08), transparent)', shadow:'rgba(194,65,12,0.25)', tag:'rgba(194,65,12,0.12)'},
+  event:         {color:'#be185d', glow:'radial-gradient(at top left, rgba(190,24,93,0.08), transparent)', shadow:'rgba(190,24,93,0.25)', tag:'rgba(190,24,93,0.12)'},
+  copyeditor:    {color:'#475569', glow:'radial-gradient(at top left, rgba(71,85,105,0.08), transparent)', shadow:'rgba(71,85,105,0.25)', tag:'rgba(71,85,105,0.12)'},
 };
 
 function setLang(l) {
@@ -431,6 +447,22 @@ async function loadAgents() {
     {id:'podcast',  name_fi:'Podcast-tuottaja', name_en:'Podcast Producer', desc_fi:'Jaksosuunnitelmat, haastattelukysymykset, shownotesit', desc_en:'Episode plans, interview questions, show notes', icon:'🎙️'},
     {id:'sales',    name_fi:'Myyntitekstit', name_en:'Sales Copywriter', desc_fi:'Landing paget, myyntifunneleet, checkout-optimointi', desc_en:'Landing pages, sales funnels, checkout optimization', icon:'💰'},
     {id:'ai_expert',name_fi:'Tekoälyasiantuntija', name_en:'AI Tools Expert', desc_fi:'Prompt engineering, AI-työnkulut, automaatio', desc_en:'Prompt engineering, AI workflows, automation', icon:'🤖'},
+    {id:'ux_writer',name_fi:'UX-kirjoittaja', name_en:'UX Writer', desc_fi:'Appin tekstit, onboarding, error-viestit', desc_en:'App copy, onboarding flows, error messages', icon:'✏️'},
+    {id:'translator',name_fi:'Kääntäjä', name_en:'Translator', desc_fi:'FI↔EN↔SV, markkinointikäännökset', desc_en:'FI↔EN↔SV, marketing translations', icon:'🌐'},
+    {id:'storytelling',name_fi:'Tarinankerroja', name_en:'Brand Storyteller', desc_fi:'Bränditarina, about-sivu, perustajatarina', desc_en:'Brand story, about page, founder narrative', icon:'📖'},
+    {id:'ecommerce',name_fi:'Verkkokauppa', name_en:'Ecommerce Specialist', desc_fi:'Tuotekuvaukset, kategoriatekstit', desc_en:'Product descriptions, category pages', icon:'🛒'},
+    {id:'b2b',name_fi:'B2B-myynti', name_en:'B2B Sales Expert', desc_fi:'LinkedIn-outreach, kylmäsähköpostit', desc_en:'LinkedIn outreach, cold email', icon:'🤝'},
+    {id:'retention',name_fi:'Asiakaspito', name_en:'Retention Specialist', desc_fi:'Churninestäminen, lojaliteettiohjelmat', desc_en:'Churn prevention, loyalty programs', icon:'🔄'},
+    {id:'naming',name_fi:'Nimiasiantuntija', name_en:'Naming Expert', desc_fi:'Yritysten nimet, tuotenimet, sloganit', desc_en:'Company names, product names, slogans', icon:'💡'},
+    {id:'crisis',name_fi:'Kriisiviestintä', name_en:'Crisis Communication', desc_fi:'Huonot arvostelut, some-kohu, PR-kriisi', desc_en:'Bad reviews, viral backlash, PR crisis', icon:'🚨'},
+    {id:'local',name_fi:'Paikallismarkkinointi', name_en:'Local Marketing', desc_fi:'Google My Business, paikallis-SEO', desc_en:'Google My Business, local SEO', icon:'📍'},
+    {id:'visual_brief',name_fi:'Visuaalinen briefi', name_en:'Visual Brief Writer', desc_fi:'Design-briiffit kuvaajille ja graafikoille', desc_en:'Design briefs for photographers and designers', icon:'🎨'},
+    {id:'research',name_fi:'Markkinatutkija', name_en:'Market Researcher', desc_fi:'Kilpailija-analyysi, asiakaspersoonat', desc_en:'Competitor analysis, customer personas', icon:'🔬'},
+    {id:'affiliate',name_fi:'Affiliate-asiantuntija', name_en:'Affiliate Expert', desc_fi:'Kumppaniohjelmat, komissiomalli', desc_en:'Partner programs, commission structure', icon:'🔗'},
+    {id:'gaming_marketing',name_fi:'Pelimarkkinointi', name_en:'Gaming Marketing', desc_fi:'Twitch, Discord, FiveM-palvelinmarkkinointi', desc_en:'Twitch, Discord, FiveM server marketing', icon:'🎮'},
+    {id:'funnel',name_fi:'Funneliarkkitehti', name_en:'Funnel Architect', desc_fi:'TOFU/MOFU/BOFU, myyntiputki', desc_en:'TOFU/MOFU/BOFU, sales pipeline', icon:'📐'},
+    {id:'event',name_fi:'Tapahtumamarkkinointi', name_en:'Event Marketing', desc_fi:'Webinaarit, livestreamit, lanseeraukset', desc_en:'Webinars, livestreams, launches', icon:'🎪'},
+    {id:'copyeditor',name_fi:'Tekstintarkistaja', name_en:'Copy Editor', desc_fi:'Oikoluku, brändiääni, tyyli', desc_en:'Proofreading, brand voice, style check', icon:'🔍'},
   ];
   renderAgents();
   renderFeatures();
