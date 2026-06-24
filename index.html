@@ -268,7 +268,7 @@
 
 <!-- STATS -->
 <div class="stats-bar">
-  <div class="stat"><div class="stat-num">8</div><div class="stat-label" id="stat1">Erikoisagenttia</div></div>
+  <div class="stat"><div class="stat-num">16</div><div class="stat-label" id="stat1">Erikoisagenttia</div></div>
   <div class="stat"><div class="stat-num">2</div><div class="stat-label" id="stat2">Kieltä</div></div>
   <div class="stat"><div class="stat-num">∞</div><div class="stat-label" id="stat3">Luovuutta</div></div>
   <div class="stat"><div class="stat-num">24/7</div><div class="stat-label" id="stat4">Saatavilla</div></div>
@@ -378,7 +378,15 @@ const CARD_STYLES = {
   seo:       {color:'#10b981', glow:'radial-gradient(at top left, rgba(16,185,129,0.08), transparent)', shadow:'rgba(16,185,129,0.25)', tag:'rgba(16,185,129,0.12)'},
   analytics: {color:'#06b6d4', glow:'radial-gradient(at top left, rgba(6,182,212,0.08), transparent)', shadow:'rgba(6,182,212,0.25)', tag:'rgba(6,182,212,0.12)'},
   email:          {color:'#f97316', glow:'radial-gradient(at top left, rgba(249,115,22,0.08), transparent)', shadow:'rgba(249,115,22,0.25)', tag:'rgba(249,115,22,0.12)'},
-  finnish_teacher: {color:'#0ea5e9', glow:'radial-gradient(at top left, rgba(14,165,233,0.08), transparent)', shadow:'rgba(14,165,233,0.25)', tag:'rgba(14,165,233,0.12)'},
+  finnish_teacher:{color:'#0ea5e9', glow:'radial-gradient(at top left, rgba(14,165,233,0.08), transparent)', shadow:'rgba(14,165,233,0.25)', tag:'rgba(14,165,233,0.12)'},
+  video:     {color:'#ef4444', glow:'radial-gradient(at top left, rgba(239,68,68,0.08), transparent)', shadow:'rgba(239,68,68,0.25)', tag:'rgba(239,68,68,0.12)'},
+  pr:        {color:'#64748b', glow:'radial-gradient(at top left, rgba(100,116,139,0.08), transparent)', shadow:'rgba(100,116,139,0.25)', tag:'rgba(100,116,139,0.12)'},
+  growth:    {color:'#84cc16', glow:'radial-gradient(at top left, rgba(132,204,22,0.08), transparent)', shadow:'rgba(132,204,22,0.25)', tag:'rgba(132,204,22,0.12)'},
+  influencer:{color:'#a855f7', glow:'radial-gradient(at top left, rgba(168,85,247,0.08), transparent)', shadow:'rgba(168,85,247,0.25)', tag:'rgba(168,85,247,0.12)'},
+  community: {color:'#f43f5e', glow:'radial-gradient(at top left, rgba(244,63,94,0.08), transparent)', shadow:'rgba(244,63,94,0.25)', tag:'rgba(244,63,94,0.12)'},
+  podcast:   {color:'#7c3aed', glow:'radial-gradient(at top left, rgba(124,58,237,0.08), transparent)', shadow:'rgba(124,58,237,0.25)', tag:'rgba(124,58,237,0.12)'},
+  sales:     {color:'#eab308', glow:'radial-gradient(at top left, rgba(234,179,8,0.08), transparent)', shadow:'rgba(234,179,8,0.25)', tag:'rgba(234,179,8,0.12)'},
+  ai_expert: {color:'#06b6d4', glow:'radial-gradient(at top left, rgba(6,182,212,0.08), transparent)', shadow:'rgba(6,182,212,0.25)', tag:'rgba(6,182,212,0.12)'},
 };
 
 function setLang(l) {
@@ -415,6 +423,14 @@ async function loadAgents() {
     {id:'analytics',name_fi:'Analytiikka', name_en:'Analytics Interpreter', desc_fi:'Datasta päätöksiin, KPI:t, raportointi', desc_en:'Data to decisions, KPIs, reporting', icon:'📊'},
     {id:'email',   name_fi:'Sähköpostimarkkinoija', name_en:'Email Marketer', desc_fi:'Uutiskirjeet, automaatiosekvenssit, avausprosentit', desc_en:'Newsletters, automation sequences, open rates', icon:'📧'},
     {id:'finnish_teacher', name_fi:'Suomen opettaja', name_en:'Finnish Language Teacher', desc_fi:'Korjaa suomea, opettaa puhekieltä, GPT:n ja Clauden työkaveri', desc_en:'Corrects Finnish, teaches natural slang — coworker of GPT, Claude & Cursor', icon:'🇫🇮'},
+    {id:'video',    name_fi:'Videoskriptaaja', name_en:'Video Script Writer', desc_fi:'YouTube, TikTok, Reels — koukuttavat videoskriptit', desc_en:'YouTube, TikTok, Reels — hooking video scripts', icon:'🎬'},
+    {id:'pr',       name_fi:'PR-asiantuntija', name_en:'PR & Press Expert', desc_fi:'Tiedotteet, mediakontaktit, maineen hallinta', desc_en:'Press releases, media outreach, reputation management', icon:'📰'},
+    {id:'growth',   name_fi:'Kasvuhakkeri', name_en:'Growth Hacker', desc_fi:'Viraliteetti, funneleet, nopea kasvu pienellä budjetilla', desc_en:'Virality, funnels, rapid growth on small budget', icon:'🚀'},
+    {id:'influencer',name_fi:'Vaikuttajamarkkinointi', name_en:'Influencer Marketing', desc_fi:'Yhteistyöpyynnöt, briiffit, mikro-influencerit', desc_en:'Outreach, briefs, micro-influencers', icon:'⭐'},
+    {id:'community',name_fi:'Yhteisömanageri', name_en:'Community Manager', desc_fi:'Discord, Facebook-ryhmät, fanien sitouttaminen', desc_en:'Discord, Facebook groups, fan engagement', icon:'👥'},
+    {id:'podcast',  name_fi:'Podcast-tuottaja', name_en:'Podcast Producer', desc_fi:'Jaksosuunnitelmat, haastattelukysymykset, shownotesit', desc_en:'Episode plans, interview questions, show notes', icon:'🎙️'},
+    {id:'sales',    name_fi:'Myyntitekstit', name_en:'Sales Copywriter', desc_fi:'Landing paget, myyntifunneleet, checkout-optimointi', desc_en:'Landing pages, sales funnels, checkout optimization', icon:'💰'},
+    {id:'ai_expert',name_fi:'Tekoälyasiantuntija', name_en:'AI Tools Expert', desc_fi:'Prompt engineering, AI-työnkulut, automaatio', desc_en:'Prompt engineering, AI workflows, automation', icon:'🤖'},
   ];
   renderAgents();
   renderFeatures();
