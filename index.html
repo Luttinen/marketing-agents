@@ -90,16 +90,42 @@
     border-radius: 20px; padding: 1.75rem;
     cursor: pointer; transition: all 0.3s;
     position: relative; overflow: hidden;
+    animation: cardFloat var(--float-dur, 4s) ease-in-out infinite;
+    animation-delay: var(--float-delay, 0s);
+  }
+  @keyframes cardFloat {
+    0%,100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
   }
   .agent-card::before {
     content: ''; position: absolute;
     inset: 0; border-radius: 20px; opacity: 0; transition: opacity 0.3s;
     background: var(--card-glow);
   }
-  .agent-card:hover { transform: translateY(-4px); border-color: var(--card-color); box-shadow: 0 20px 60px var(--card-shadow); }
+  .agent-card::after {
+    content: ''; position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: conic-gradient(transparent 270deg, var(--card-color) 360deg, transparent 360deg);
+    opacity: 0; transition: opacity 0.4s;
+    animation: spin 3s linear infinite;
+    border-radius: 20px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .agent-card:hover { transform: translateY(-8px) scale(1.02); border-color: var(--card-color); box-shadow: 0 24px 64px var(--card-shadow); animation-play-state: paused; }
   .agent-card:hover::before { opacity: 1; }
-  .agent-card.active { border-color: var(--card-color); box-shadow: 0 0 0 2px var(--card-color); }
-  .agent-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+  .agent-card:hover::after { opacity: 0.15; }
+  .agent-card.active { border-color: var(--card-color); box-shadow: 0 0 0 2px var(--card-color); animation-play-state: paused; }
+  .agent-icon {
+    font-size: 2.5rem; margin-bottom: 1rem; display: block;
+    animation: iconBob 2s ease-in-out infinite;
+    animation-delay: var(--float-delay, 0s);
+    filter: drop-shadow(0 0 8px var(--card-color));
+  }
+  @keyframes iconBob {
+    0%,100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.12) rotate(-3deg); }
+    75% { transform: scale(1.08) rotate(3deg); }
+  }
   .agent-name { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem; }
   .agent-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
   .agent-tag {
@@ -394,13 +420,15 @@ async function loadAgents() {
 
 function renderAgents() {
   const grid = document.getElementById('agentsGrid');
-  grid.innerHTML = agents.map(a => {
+  grid.innerHTML = agents.map((a, i) => {
     const s = CARD_STYLES[a.id] || {};
     const name = lang === 'fi' ? a.name_fi : a.name_en;
     const desc = lang === 'fi' ? a.desc_fi : a.desc_en;
+    const delay = (i * 0.55).toFixed(2);
+    const dur   = (3.5 + i * 0.3).toFixed(1);
     return `
     <div class="agent-card ${activeAgent?.id === a.id ? 'active' : ''}"
-      style="--card-color:${s.color};--card-glow:${s.glow};--card-shadow:${s.shadow};--card-tag-bg:${s.tag}"
+      style="--card-color:${s.color};--card-glow:${s.glow};--card-shadow:${s.shadow};--card-tag-bg:${s.tag};--float-delay:${delay}s;--float-dur:${dur}s"
       onclick="openAgent('${a.id}')">
       <span class="agent-icon">${a.icon}</span>
       <div class="agent-name">${name}</div>
