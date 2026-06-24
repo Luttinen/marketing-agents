@@ -268,7 +268,7 @@
 
 <!-- STATS -->
 <div class="stats-bar">
-  <div class="stat"><div class="stat-num">36</div><div class="stat-label" id="stat1">Erikoisagenttia</div></div>
+  <div class="stat"><div class="stat-num">37</div><div class="stat-label" id="stat1">Erikoisagenttia</div></div>
   <div class="stat"><div class="stat-num">2</div><div class="stat-label" id="stat2">Kieltä</div></div>
   <div class="stat"><div class="stat-num">∞</div><div class="stat-label" id="stat3">Luovuutta</div></div>
   <div class="stat"><div class="stat-num">24/7</div><div class="stat-label" id="stat4">Saatavilla</div></div>
@@ -407,6 +407,7 @@ const CARD_STYLES = {
   tiktok_kommentti: {color:'#ef4444', glow:'radial-gradient(at top left, rgba(239,68,68,0.08), transparent)', shadow:'rgba(239,68,68,0.25)', tag:'rgba(239,68,68,0.12)'},
   tiktok_brändi:    {color:'#f59e0b', glow:'radial-gradient(at top left, rgba(245,158,11,0.08), transparent)', shadow:'rgba(245,158,11,0.25)', tag:'rgba(245,158,11,0.12)'},
   tiktok_kalenteri: {color:'#8b5cf6', glow:'radial-gradient(at top left, rgba(139,92,246,0.08), transparent)', shadow:'rgba(139,92,246,0.25)', tag:'rgba(139,92,246,0.12)'},
+  xbox:              {color:'#107c10', glow:'radial-gradient(at top left, rgba(16,124,16,0.08), transparent)', shadow:'rgba(16,124,16,0.25)', tag:'rgba(16,124,16,0.12)'},
 };
 
 function setLang(l) {
@@ -471,6 +472,7 @@ async function loadAgents() {
     {id:'tiktok_kommentti', name_fi:'Kommenttisuoja 🗡️', name_en:'Comment Guard 🗡️', desc_fi:'Trollit, hate-kommentit, yhteisön rakentaminen', desc_en:'Trolls, hate comments, community building', icon:'🗡️'},
     {id:'tiktok_brändi', name_fi:'Brändin vartija ⚔️', name_en:'Brand Guard ⚔️', desc_fi:'@OfficialLuttinen-brändi yhtenäisenä kaikkialla', desc_en:'Keeps @OfficialLuttinen brand consistent', icon:'⚔️'},
     {id:'tiktok_kalenteri', name_fi:'Sisältökalenteri 📅', name_en:'Content Calendar 📅', desc_fi:'Videoideat, aikataulu, järjestys kaaokseen', desc_en:'Video ideas, schedule, order from chaos', icon:'📅'},
+    {id:'xbox', name_fi:'Xbox Game Pass 🎮', name_en:'Xbox Game Pass 🎮', desc_fi:'Kaikki pelit, suositukset, mitä pelata seuraavaks', desc_en:'All games, what to play next', icon:'🟢'},
   ];
   renderAgents();
   renderFeatures();

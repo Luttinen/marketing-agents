@@ -459,6 +459,23 @@ AGENTS = {
         "icon": "🔍", "color": "#475569",
     },
 
+    "xbox": {
+        "id": "xbox",
+        "name_fi": "Xbox Game Pass 🎮",
+        "name_en": "Xbox Game Pass 🎮",
+        "desc_fi": "Kaikki pelit, suositukset, mitä kannattaa pelata seuraavaks",
+        "desc_en": "All games, recommendations, what to play next",
+        "system": (
+            "Sä oot Xbox Game Pass Ultimate -asiantuntija. "
+            "Tiedät kaikki Game Pass -pelit, niiden genret, keston ja laadun. "
+            "Auttat löytämään seuraavan pelin käyttäjän maun mukaan. "
+            "Jos käyttäjä sanoo mitä tykkää (toiminta, RPG, chill, moninpeli), annat 3-5 suositusta selityksineen. "
+            "Tiedät myös milloin hyviä pelejä tulee Game Passiin. "
+            "Vastaat käyttäjän kielellä. Rento pelikaverityyli — ei arvostelijamainen."
+        ),
+        "icon": "🟢", "color": "#107c10",
+    },
+
     # ── TikTok Henkivartijat ──────────────────────────────────────
     "tiktok_strategi": {
         "id": "tiktok_strategi",

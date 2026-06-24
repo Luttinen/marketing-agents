@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖 Paina Tästä</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    background: radial-gradient(ellipse at center, #1a0030 0%, #04010f 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    font-family: system-ui, sans-serif;
+    overflow: hidden; user-select: none;
+  }
+  .title {
+    color: #fff; font-size: clamp(1.2rem, 4vw, 2rem);
+    letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 0.5rem; opacity: 0.7;
+  }
+  .subtitle {
+    color: #aaa; font-size: 0.95rem; margin-bottom: 3rem;
+    letter-spacing: 0.1em;
+  }
+  .btn-wrap {
+    position: relative; display: flex;
+    align-items: center; justify-content: center;
+  }
+  .ring {
+    position: absolute; border-radius: 50%;
+    border: 2px solid rgba(255,100,200,0.3);
+    animation: expand 2.5s ease-out infinite;
+  }
+  .ring:nth-child(2) { animation-delay: 0.8s; }
+  .ring:nth-child(3) { animation-delay: 1.6s; }
+  @keyframes expand {
+    0%   { width: 180px; height: 180px; opacity: 0.6; }
+    100% { width: 420px; height: 420px; opacity: 0; }
+  }
+  .btn {
+    width: 180px; height: 180px; border-radius: 50%;
+    border: none; cursor: pointer; position: relative; z-index: 10;
+    background: radial-gradient(circle at 35% 35%,
+      #ff80c0, #d63aff 40%, #7b2fff 70%, #3a00cc);
+    box-shadow:
+      0 0 40px rgba(214,58,255,0.6),
+      0 0 80px rgba(214,58,255,0.3),
+      inset 0 0 30px rgba(255,255,255,0.15);
+    animation: btnPulse 1.8s ease-in-out infinite;
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  @keyframes btnPulse {
+    0%,100% { box-shadow: 0 0 40px rgba(214,58,255,0.6), 0 0 80px rgba(214,58,255,0.3), inset 0 0 30px rgba(255,255,255,0.15); }
+    50%      { box-shadow: 0 0 60px rgba(214,58,255,0.9), 0 0 120px rgba(214,58,255,0.5), inset 0 0 40px rgba(255,255,255,0.2); }
+  }
+  .btn:active { transform: scale(0.93); }
+  .btn-text {
+    color: white; font-size: 1.3rem; font-weight: 800;
+    letter-spacing: 0.05em; text-shadow: 0 0 20px rgba(255,255,255,0.8);
+    pointer-events: none;
+  }
+  .result {
+    margin-top: 3rem; font-size: 1.5rem; color: white;
+    text-align: center; min-height: 2rem;
+    text-shadow: 0 0 20px rgba(214,58,255,0.8);
+    transition: all 0.3s; letter-spacing: 0.05em;
+  }
+  canvas { position: fixed; inset: 0; pointer-events: none; z-index: 99; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<p class="title">Jarnon AI-tiimi</p>
+<p class="subtitle">Paina nappia käynnistääksesi 36 agenttia</p>
+<div class="btn-wrap">
+  <div class="ring"></div>
+  <div class="ring"></div>
+  <div class="ring"></div>
+  <button class="btn" onclick="launch()">
+    <span class="btn-text">PAINA<br>TÄSTÄ</span>
+  </button>
+</div>
+<div class="result" id="result"></div>
+
+<script>
+const msgs = [
+  "🚀 36 agenttia aktivoitu!",
+  "💜 Jarvis käynnistyy...",
+  "🔥 Järjestelmä online!",
+  "✨ Kaikki agentit valmiina!",
+  "🤖 Tekoäly töissä!",
+];
+let launched = false;
+
+function launch() {
+  if (launched) return;
+  launched = true;
+  document.getElementById('result').textContent = msgs[Math.floor(Math.random()*msgs.length)];
+  boom();
+  setTimeout(() => { window.open('http://localhost:8000', '_blank'); }, 800);
+  setTimeout(() => { launched = false; document.getElementById('result').textContent = ''; }, 4000);
+}
+
+// ── Confetti ──────────────────────────────────────────────────────
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+window.addEventListener('resize', () => { canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
+
+let particles = [];
+const colors = ['#ff80c0','#d63aff','#7b2fff','#00d4ff','#ffdd00','#ff4466','#00ffaa'];
+
+function boom() {
+  for (let i = 0; i < 220; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = 4 + Math.random() * 12;
+    particles.push({
+      x: canvas.width/2, y: canvas.height/2,
+      vx: Math.cos(angle)*speed, vy: Math.sin(angle)*speed - 6,
+      size: 6 + Math.random()*8,
+      color: colors[Math.floor(Math.random()*colors.length)],
+      life: 1, decay: 0.012 + Math.random()*0.01,
+      rotation: Math.random()*360,
+      rotSpeed: (Math.random()-0.5)*8,
+    });
+  }
+  requestAnimationFrame(animate);
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles = particles.filter(p => p.life > 0);
+  particles.forEach(p => {
+    p.x += p.vx; p.y += p.vy; p.vy += 0.3;
+    p.life -= p.decay; p.rotation += p.rotSpeed;
+    ctx.save();
+    ctx.globalAlpha = p.life;
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rotation * Math.PI/180);
+    ctx.fillStyle = p.color;
+    ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size*0.5);
+    ctx.restore();
+  });
+  if (particles.length > 0) requestAnimationFrame(animate);
+}
+</script>
+</body>
+</html>
