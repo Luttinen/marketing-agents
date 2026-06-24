@@ -378,8 +378,16 @@ function setLang(l) {
 }
 
 async function loadAgents() {
-  const res = await fetch('/agents');
-  agents = await res.json();
+  // Embedded agent data — works without backend server
+  agents = [
+    {id:'content', name_fi:'Sisältökirjoittaja', name_en:'Content Writer', desc_fi:'Luo blogipostauksia, artikkeleita ja markkinointitekstiä', desc_en:'Creates blog posts, articles and marketing copy', icon:'✍️'},
+    {id:'social',  name_fi:'Some-manageri', name_en:'Social Media Manager', desc_fi:'Instagram, Facebook, LinkedIn, TikTok -postaukset', desc_en:'Instagram, Facebook, LinkedIn, TikTok posts', icon:'📱'},
+    {id:'ads',     name_fi:'Mainostekstit', name_en:'Ad Copywriter', desc_fi:'Google Ads, Meta Ads, konvertoivat mainokset', desc_en:'Google Ads, Meta Ads, high-converting copy', icon:'🎯'},
+    {id:'brand',   name_fi:'Brändistrategisti', name_en:'Brand Strategist', desc_fi:'Brändi-identiteetti, ääni, arvolupaus', desc_en:'Brand identity, voice, value proposition', icon:'💎'},
+    {id:'seo',     name_fi:'SEO-analyytikko', name_en:'SEO Analyst', desc_fi:'Avainsanatutkimus, optimointi, sijoitusstrategiat', desc_en:'Keyword research, optimization, ranking strategies', icon:'🔍'},
+    {id:'analytics',name_fi:'Analytiikka', name_en:'Analytics Interpreter', desc_fi:'Datasta päätöksiin, KPI:t, raportointi', desc_en:'Data to decisions, KPIs, reporting', icon:'📊'},
+    {id:'email',   name_fi:'Sähköpostimarkkinoija', name_en:'Email Marketer', desc_fi:'Uutiskirjeet, automaatiosekvenssit, avausprosentit', desc_en:'Newsletters, automation sequences, open rates', icon:'📧'},
+  ];
   renderAgents();
   renderFeatures();
 }
